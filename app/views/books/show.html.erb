@@ -1,0 +1,19 @@
+<div class="container px-5 px-sm-0">
+ <div class="row">
+  <div class="col-md-3">
+    <%= render 'books/list', user: @user, book_new: @book_new %>
+  </div>
+ <div class= "col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+  　<table class= "table">
+      <tr>
+        <td><%= link_to(@book.user) do %>
+        <%= image_tag @book.user.get_profile_image(100,100) %>
+        <% end %>
+        </td>
+        <td><%= link_to @book.title,@book %></td>
+        <td><%= @book.body %></td>
+      </tr>
+  　</table>
+  </div>
+</div>
