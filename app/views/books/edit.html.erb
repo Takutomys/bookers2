@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Edithing Book</h1>
+      <% if @book.errors.any? %>
+       <h3><%= @book.errors.count %> errors prohibited obj book from being saved:</h3>
+      <ul>
+       <% @book.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+      <% end %>
+      </ul>
+     <% end %>
+      <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+      <div class="form-group">
+       <%= f.label :title %><br>
+       <%= f.text_field :title, autofocus: true%>
+      </div>
+      <div class="form-group">
+       <%= f.label :body do %>Opinion<% end %><br>
+       <%= f.text_area :body %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Update Book' %>
+      </div>
+      <% end %>
+      <p><%= link_to "show", book_path(@book.id) %> | <%= link_to "back", books_path %></p>
+    </div>
+  </div>
+</div>
